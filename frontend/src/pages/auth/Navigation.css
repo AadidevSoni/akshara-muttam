@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+  --bg-dark: rgba(31, 31, 31, 0.85);
+  --hover-bg: rgba(84, 224, 132, 0.15);
+  --dropdown-bg: rgba(15, 65, 40, 0.95);
+  --accent-color: rgb(119, 233, 187);
+  --text-color: white;
+  --nav-width-collapsed: 6%;
+  --nav-width-expanded: 12%;
+  --font-family: 'Poppins', sans-serif; 
+}
+
+.navigation-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: var(--nav-width-collapsed);
+  background-color: var(--bg-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0.5rem;
+  transition: width 0.4s ease;
+  overflow: hidden;
+  z-index: 999;
+  font-family: var(--font-family);
+}
+
+.navigation-container:hover {
+  width: var(--nav-width-expanded);
+  cursor: pointer;
+}
+
+.navigation-container.hidden {
+  display: none;
+}
+
+.navigation-container.visible {
+  display: flex;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  margin-top: 5rem;
+  width: 100%;
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: column;  
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  width: 100%;
+  transition: background 0.2s ease, transform 0.3s ease;
+  padding: 0.25rem 0;
+  gap: 0.25rem;
+}
+
+.nav-link:hover {
+  color: var(--text-color);
+  transform: translateX(8px);
+}
+
+.nav-icon {
+  margin: 0;
+  font-size: 1.8rem; 
+  transition: transform 0.5s ease;
+}
+
+.nav-item-name {
+  display: block;     
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0;
+  height: 1.2rem;   
+  text-align: center;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.navigation-container:hover .nav-item-name {
+  opacity: 1;
+}
+
+.auth-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.uname {
+  color: var(--accent-color);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+}
+
+.unameButton {
+  background: none;
+  border: none;
+  color: var(--accent-color);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 3rem;
+  width: 100%;
+  text-align: center;
+  font-family: var(--font-family);
+}
+
+.unameButton:hover {
+  cursor: pointer;
+}
+
+.dropdown-arrow {
+  height: 1rem;
+  width: 1rem;
+  margin-left: 0.3rem;
+  transition: transform 0.3s ease;
+  stroke: white;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.dropdownList {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--dropdown-bg);
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  padding: 0.5rem 0;
+  z-index: 1000;
+}
+
+.nav-list-item {
+  padding: 0.7rem 1rem;
+  color: var(--text-color);
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  font-family: var(--font-family);
+  font-weight: 500;
+}
+
+.relative {
+  position: relative;
+}
+
+.listButton {
+  background: none;
+  border: none;
+  color: white;
+  padding: 0.7rem 1rem;
+  text-align: left;
+  font-family: var(--font-family);
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.listButton:hover {
+  cursor: pointer;
+}
+
+//RESPONSIVENESS
+
+@media (max-width: 768px) {
+  .navigation-container {
+    width: 60px;
+    padding: 0.5rem;
+  }
+
+  .navigation-container:hover {
+    width: 180px;
+  }
+
+  .nav-links {
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+
+  .nav-icon {
+    font-size: 1.5rem;
+  }
+
+  .nav-item-name {
+    font-size: 0.75rem;
+  }
+
+  .auth-links {
+    margin-bottom: 1rem;
+  }
+
+  .listButton {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navigation-container {
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    margin-top: 1rem;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0.5rem 0;
+    background-color: var(--bg-dark);
+    z-index: 1000;
+  }
+
+  .navigation-container:hover {
+    width: 100%;
+  }
+
+  .nav-links {
+    flex-direction: row;
+    gap: 1rem;
+    margin: 0;
+  }
+
+  .auth-links {
+    flex-direction: row;
+    gap: 1rem;
+    margin: 0;
+  }
+
+  .nav-link {
+    flex-direction: column;
+    padding: 0.25rem;
+  }
+
+  .nav-icon {
+    font-size: 1.3rem;
+  }
+
+  .nav-item-name {
+    font-size: 0.7rem;
+    opacity: 1;
+  }
+
+  .listButton {
+    margin: 0;
+    font-size: 0.7rem;
+    padding: 0.25rem;
+  }
+}

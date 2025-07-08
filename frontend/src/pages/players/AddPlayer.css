@@ -1,0 +1,267 @@
+.addPlayerBlock {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  overflow: hidden;
+  color: white;
+}
+
+.video-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.video-background {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
+}
+
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+}
+
+.addPlayerContainer {
+  position: relative;
+  z-index: 1;
+  background-color: rgba(15, 30, 75, 0.93); 
+  padding: 2rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px; 
+  transform: translateX(-200px);
+}
+
+.addPlayerTitle {
+  font-size: 2.2rem;
+  font-weight: bold;
+  font-family: "Oswald", sans-serif;
+  margin-bottom: 2rem;
+  color: #93c5fd;
+  text-align: center;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.addPlayerLabel {
+  font-size: 1.3rem;
+  margin-top: 1.2rem;
+  color: #cbd5e1;
+}
+
+.addPlayerInput {
+  width: 90%;
+  padding: 14px;
+  margin-top: 0.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  border: none;
+  background-color: #f0f9ff;
+  color: #0f172a;
+  margin-bottom: 1.5rem;
+
+}
+
+.addPlayerInput:focus {
+  outline: 2px solid #60a5fa;
+  background-color: #fff;
+}
+
+.submitPlayerButton {
+  margin-top: 2rem;
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #2563eb;
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: "Oswald", sans-serif;
+  transition: background 0.3s ease;
+}
+
+.submitPlayerButton:hover {
+  background-color: #1d4ed8;
+}
+
+/* Reusable loading screen */
+.initial-loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0f172a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  color: #93c5fd;
+  font-size: 1.5rem;
+  font-family: "Oswald", sans-serif;
+}
+
+.loader-circle {
+  border: 5px solid #93c5fd;
+  border-top: 5px solid transparent;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+//RESPONSIVENESS
+
+@media (max-width: 1024px) {
+  .addPlayerContainer {
+    padding: 1.5rem;
+    transform: translateX(0px);
+    margin-bottom: 2rem;
+  }
+
+  .addPlayerInput {
+    width: 100%;
+  }
+
+  .addPlayerTitle {
+    font-size: 2rem;
+  }
+
+  .addPlayerLabel {
+    font-size: 1.2rem;
+  }
+
+  .submitPlayerButton {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .addPlayerBlock {
+    padding: 1rem;
+  }
+
+  .addPlayerContainer {
+    max-width: 90%;
+    padding: 1.5rem;
+    transform: translateX(0px);
+    margin-bottom: 2rem;
+  }
+
+  .addPlayerTitle {
+    font-size: 1.8rem;
+  }
+
+  .addPlayerLabel {
+    font-size: 1.1rem;
+  }
+
+  .submitPlayerButton {
+    padding: 0.7rem;
+    font-size: 1rem;
+  }
+
+  .addPlayerInput {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .addPlayerContainer {
+    padding: 1rem;
+    border-radius: 8px;
+    transform: translateX(0px);
+    margin-bottom: 2rem;
+  }
+
+  .addPlayerTitle {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .addPlayerLabel {
+    font-size: 1rem;
+  }
+
+  .addPlayerInput {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .submitPlayerButton {
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
+
+  .loader-circle {
+    width: 50px;
+    height: 50px;
+    border-width: 4px;
+  }
+
+  .loading-text {
+    font-size: 1rem;
+  }
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #2563eb;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Oswald', sans-serif;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.custom-file-upload:hover {
+  background-color: #1e40af;
+}
+
+.custom-file-upload:active {
+  background-color: #1d4ed8;
+}
+
+input[type="file"] {
+  display: none;
+}
