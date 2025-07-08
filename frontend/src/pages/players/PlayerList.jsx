@@ -41,8 +41,6 @@ const PlayerList = () => {
     );
   }, [players, searchTerm]);
 
-  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
   const handleDownloadPDF = () => {
     if (!players || players.length === 0) return;
 

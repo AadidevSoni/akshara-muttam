@@ -1,4 +1,4 @@
-import Player from '../models/playerModel.js';
+import Player from '../models/userModel.js';
 import Admin from '../models/adminModel.js';
 import asyncHandler from "../middlewares/asyncHandler.js";
 import bcrypt from 'bcryptjs';
@@ -46,37 +46,6 @@ export const logoutCurrentUser = asyncHandler(async (req, res) => {
   res.status(200).json({ message: "Logged out successfully" });
 });
 
-const generatePlayerId = async () => {
-  const allPlayers = await Player.find({ playerId: /^GRO-\d+$/ }).select('playerId');
-
-  const maxNumber = allPlayers.reduce((max, player) => {
-    const num = parseInt(player.playerId.split('-')[1], 10);
-    return num > max ? num : max;
-  }, 0);
-
-  const nextNumber = maxNumber + 1;
-  const nextId = `GRO-${String(nextNumber).padStart(3, '0')}`;
-
-  return nextId;
-};
-
-export const createPlayer = asyncHandler(async (req, res) => {
-  const { name, email, phone, fees, registrationDate } = req.body;
-  const playerId = await generatePlayerId();
-  const existing = await Player.findOne({ playerId });
-  if (existing) {
-    res.status(400);
-    throw new Error('Player ID already exists');
-  }
-  const player = await Player.create({ playerId, name, email, phone, fees, registrationDate: registrationDate || Date.now()});
-  res.status(201).json(player);
-});
-
-export const getAllPlayers = asyncHandler(async (req, res) => {
-  const players = await Player.find();
-  res.json(players);
-});
-
 export const updatePlayerById = asyncHandler(async (req, res) => {
   const player = await Player.findById(req.params.id);
 
@@ -85,21 +54,21 @@ export const updatePlayerById = asyncHandler(async (req, res) => {
     throw new Error('Player not found');
   }
 
-  const { playerId, name, email, phone, fees, paymentStatus, registrationDate } = req.body;
+  const { registrationId, name, age, whatsappNo, Class, registrationDate } = req.body;
 
-  if (playerId && playerId !== player.playerId) {
-    const existing = await Player.findOne({ playerId });
+  if (registrationId && registrationId !== player.registrationId) {
+    const existing = await Player.findOne({ registrationId });
     if (existing && existing._id.toString() !== player._id.toString()) {
       res.status(400);
       throw new Error('Player ID already exists');
     }
-    player.playerId = playerId;
+    player.registrationId = registrationId;
   }
 
   player.name = name || player.name;
-  player.email = email || player.email;
-  player.phone = phone || player.phone;
-  player.fees = fees || player.fees;
+  player.age = age || player.age;
+  player.whatsappNo = whatsappNo || player.whatsappNo;
+  player.Class = Class || player.Class;
   player.registrationDate = registrationDate || player.registrationDate;
 
   if (paymentStatus && typeof paymentStatus === 'object') {

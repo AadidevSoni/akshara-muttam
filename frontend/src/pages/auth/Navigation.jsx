@@ -35,14 +35,14 @@ const Navigation = () => {
           <span className="nav-item-name">Home</span>
         </Link>
 
-        <Link to="/addPlayer" className="nav-link" onClick={() => setShowSidebar(false)}>
-          <IoIosPersonAdd className="nav-icon" size={26} />
-          <span className="nav-item-name">Add Player</span>
-        </Link>
-
         <Link to="/playerList" className="nav-link" onClick={() => setShowSidebar(false)}>
           <FaUsers className="nav-icon" size={26} />
-          <span className="nav-item-name">View Players</span>
+          <span className="nav-item-name">Registration List</span>
+        </Link>
+
+        <Link to="/register" className="nav-link" onClick={() => setShowSidebar(false)}>
+          <FaUsers className="nav-icon" size={26} />
+          <span className="nav-item-name">Registration</span>
         </Link>
       </div>
 

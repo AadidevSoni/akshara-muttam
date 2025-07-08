@@ -1,0 +1,33 @@
+.registerPage {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 30px;
+  background: rgba(0, 60, 120, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.registerForm input {
+  display: block;
+  width: 100%;
+  margin: 12px 0;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #0055aa;
+  border-radius: 6px;
+}
+
+.registerForm button {
+  background-color: #0055aa;
+  color: white;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.registerForm button:hover {
+  background-color: #003f80;
+}

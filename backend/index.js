@@ -7,11 +7,12 @@ import Admin from './models/adminModel.js';
 import bcrypt from 'bcryptjs';             
 import cors from 'cors';
 import helmet from 'helmet';
+import registerRoutes from "./routes/registerRoutes.js";
 
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 7001;
+const port = process.env.PORT || 7002;
 
 //Helmet secures the headers
 app.use(helmet());
@@ -19,13 +20,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-//Allow only your Netlify-deployed frontend to make requests to your Express backend.
-app.use(cors({
-  origin: 'https://groacademy.netlify.app',
-  credentials: true, //Send cookies or authentication headers.
-}));
-
 app.use('/api/admin', adminRoutes);
+app.use('/api',registerRoutes);
 
 const createDefaultAdmin = async () => {
   try {
@@ -48,13 +44,7 @@ const createDefaultAdmin = async () => {
 const startServer = async () => {
   try {
     await connectDB(); 
-
     await createDefaultAdmin(); 
-
-    //for uptimerobot to ping the backend every 5min
-    app.get('/api/ping', (req, res) => {
-      res.status(200).json({ message: 'pong' });
-    });
 
     app.listen(port, () => {
       console.log(`Server running on port ${port}`);

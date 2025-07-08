@@ -13,6 +13,7 @@ import EditPlayer from './pages/players/EditPlayer';
 import Home from './pages/auth/Home';
 
 import PrivateRoute from './components/PrivateRoute.jsx';
+import Register from './pages/players/Register.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +27,7 @@ const router = createBrowserRouter(
       
       <Route index element={<Home />} />
       <Route path="auth" element={<Login />} />
+      <Route path="register" element={<Register />} />
     </Route>
   )
 );

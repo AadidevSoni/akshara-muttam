@@ -1,5 +1,5 @@
 import express from 'express';
-import {createPlayer,getAllPlayers,loginAdmin,logoutCurrentUser,deletePlayerById,updatePlayerById,getPlayerById,uploadPlayersExcelBatch
+import {createPlayer,getAllPlayers,loginAdmin,logoutCurrentUser,deletePlayerById,updatePlayerById,getPlayerById,uploadPlayersExcelBatch,
 } from '../controllers/playerController.js';
 
 import { authenticate } from "../middlewares/authMiddleware.js";
@@ -19,5 +19,6 @@ router.route('/:id')
   .put(authenticate, updatePlayerById);
 
 router.post('/upload-excel', authenticate, uploadPlayersExcelBatch);
+
 
 export default router;
